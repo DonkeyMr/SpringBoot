@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration  //让Spring来加载该类配置
 @EnableSwagger2  //启用Swagger2
-public class Swagger2 {
+public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
