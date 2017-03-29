@@ -47,16 +47,3 @@ spring.datasource:
 
 #测试@Value("${属性名}")注解来加载对应的配置属性
 file.name: liupeng
-
-spring.thymeleaf:
-    cache: false 
-    check-template-location: true
-    content-type: text/html 
-    enabled: true 
-    encoding: UTF-8
-    excluded-view-names:
-    mode: HTML5 
-    prefix: classpath:/templates/ 
-    suffix: .html
-    template-resolver-order: 
-    

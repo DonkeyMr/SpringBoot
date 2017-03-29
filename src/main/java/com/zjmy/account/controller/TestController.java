@@ -13,8 +13,8 @@ public class TestController {
 	@Value("${file.name}")
 	String name;
 	
-	@RequestMapping("/test/value")
-	public void testValue() {
-	  System.err.println(name);
+	@RequestMapping("/test")
+	public String testValue() {
+	  return "world";
 	}
 }
