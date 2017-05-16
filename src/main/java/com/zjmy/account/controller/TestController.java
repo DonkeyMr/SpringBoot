@@ -10,11 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-	@Value("${file.name}")
-	String name;
+
+	@Value("${user.name}")
+	private String name;
+	
+	@Value("${user.showName}")
+	private String showName;
 	
 	@RequestMapping("/test")
-	public String testValue() {
-	  return "world";
+	public void testValue() {
+	    System.out.println(this.name);
+	    System.out.println(this.showName);
 	}
+	
+	
 }

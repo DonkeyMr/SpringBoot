@@ -46,7 +46,9 @@ spring.datasource:
     password: root
 
 #测试@Value("${属性名}")注解来加载对应的配置属性
-file.name: liupeng
+user:
+  name: liupeng
+  showName: 刘鹏
 
 spring.thymeleaf:
     cache: false 
@@ -59,4 +61,3 @@ spring.thymeleaf:
     prefix: classpath:/templates/ 
     suffix: .html
     template-resolver-order: 
-    
