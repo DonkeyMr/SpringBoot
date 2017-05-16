@@ -22,8 +22,15 @@ server.tomcat:
 server:
     address: 127.0.0.1
     port: 8888
-    sessionTimeout: 30
+    sessionTimeout: 1800
     contextPath: /
+    
+#HTTPS支持
+server.ssl:
+    key-store: keystore.p12
+    key-store-password: 123456
+    keyStoreType: PKCS12
+    keyAlias: tomcat    
     
 #数据库连接信息   
 #spring.datasource:
