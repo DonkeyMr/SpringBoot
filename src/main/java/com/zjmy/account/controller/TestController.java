@@ -55,4 +55,18 @@ public class TestController {
 	    return map;
 	}
 	
+	public static void main(String[] args) {
+		Map<String, Object> data = new HashMap<String, Object>();
+	    data.put("mobile", "17343083162");
+	    data.put("email", "1532129326@qq.com");
+	    data.put("name", "刘鹏");
+	    String ftlHtml = FreemarkerUtils.loadFtlHtml("simpleForm.ftl", data);
+	    FileOutputStream f = null;
+		try {
+			f = new FileOutputStream("d:\\a.pdf");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	    PdfFileUtils.saveChinesePdf(f, ftlHtml);
+	} 
 }
