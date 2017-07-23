@@ -97,6 +97,16 @@
 		    <artifactId>xmlworker</artifactId>
 		    <version>5.5.9</version>
 		</dependency>
+		<!-- security -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency> 
+        <!-- 用于security标签 hasRole('ROLE_ADMIN') -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+        </dependency>
 		
   </dependencies>
   

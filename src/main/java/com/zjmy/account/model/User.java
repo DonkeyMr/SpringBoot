@@ -1,8 +1,15 @@
 package com.zjmy.account.model;
 
-import com.zjmy.account.enums.Gender;
+import java.util.Collection;
+import java.util.List;
 
-public class User {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.zjmy.account.enums.Gender;
+import com.zjmy.account.interfaces.CustomUserDetails;
+
+public class User extends org.springframework.security.core.userdetails.User implements CustomUserDetails {
 
 	private Long id;
 	
@@ -16,6 +23,8 @@ public class User {
 	 * 性别  0:女,1:男
 	 */
 	private Gender gender;
+	
+    private List<Role> roles;
 
 	public Long getId() {
 		return id;
@@ -57,8 +66,20 @@ public class User {
 		this.gender = gender;
 	}
 
-	
+	public List<Role> getRoles() {
+		return roles;
+	}
 
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}	
 	
 	
+	public User(String username, String password, Integer age, Gender gender,
+			Collection<? extends GrantedAuthority> authorities) {
+		super(username, password, authorities);
+		this.age = age;
+		this.gender = gender;
+	}
+    
 }

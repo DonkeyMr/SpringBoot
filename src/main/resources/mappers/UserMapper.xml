@@ -11,6 +11,9 @@
        <result column="password" property="password" jdbcType="VARCHAR" />
        <result column="age" property="age" jdbcType="INTEGER" />
        <result column="gender" property="gender" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+       <collection property="roles" ofType="com.zjmy.account.model.Role">
+           <result column="role" property="name" />
+       </collection>
    </resultMap>
 
    <select id="getUserList" resultMap="userResultMap">
@@ -33,6 +36,14 @@
       FROM t_user
       where id = #{id}
    </select>
+   
+   <select id="getUserByUsername" resultMap="userResultMap">
+       SELECT u.*,r.name role FROM t_user u
+	   LEFT JOIN t_user_role ur ON u.id = ur.user_id
+	   LEFT JOIN t_role r ON ur.role_id = r.id 
+	   WHERE username = #{username}
+   </select>
+   
    
    <!-- 一般情况下不用声明参数类型,用枚举类型就要用parameterType -->
    <insert id="add" parameterType="User" useGeneratedKeys="true" keyProperty="id">

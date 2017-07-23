@@ -1,10 +1,6 @@
 package com.zjmy.account.service;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.zjmy.account.interfaces.UserService;
 import com.zjmy.account.mapper.UserMapper;
 import com.zjmy.account.model.User;
-import com.zjmy.account.utils.FreemarkerUtils;
-import com.zjmy.account.utils.PdfFileUtils;
 
 @Service
 public class UserServiceImpl implements UserService {

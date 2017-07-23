@@ -1,4 +1,4 @@
-package com.zjmy;
+package com.zjmy.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;

@@ -55,7 +55,7 @@ public class TestController {
 	    return map;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Map<String, Object> data = new HashMap<String, Object>();
 	    data.put("mobile", "17343083162");
 	    data.put("email", "1532129326@qq.com");
@@ -68,5 +68,5 @@ public class TestController {
 			e.printStackTrace();
 		}
 	    PdfFileUtils.saveChinesePdf(f, ftlHtml);
-	} 
+	} */
 }
