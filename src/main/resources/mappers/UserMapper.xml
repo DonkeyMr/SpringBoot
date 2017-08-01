@@ -37,8 +37,9 @@
       where id = #{id}
    </select>
    
+   <!-- 因为User是有参构造,所有要严格注意列的排放排序,必须要满足有参构造方法-->
    <select id="getUserByUsername" resultMap="userResultMap">
-       SELECT u.*,r.name role FROM t_user u
+       SELECT u.*,r.name roles FROM t_user u
 	   LEFT JOIN t_user_role ur ON u.id = ur.user_id
 	   LEFT JOIN t_role r ON ur.role_id = r.id 
 	   WHERE username = #{username}

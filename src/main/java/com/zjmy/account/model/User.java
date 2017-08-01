@@ -75,11 +75,20 @@ public class User extends org.springframework.security.core.userdetails.User imp
 	}	
 	
 	
-	public User(String username, String password, Integer age, Gender gender,
+	public User(Long id, String username, String password, Integer age, Gender gender,
 			Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
+		this.id = id;
 		this.age = age;
 		this.gender = gender;
 	}
+
+	@Override
+	public String toString() {
+		return "id= " + id + ", username= " + username + ", password= "
+				+ password + ", age= " + age + ", gender= " + gender + ", roles= "
+				+ roles;
+	}
     
+	
 }

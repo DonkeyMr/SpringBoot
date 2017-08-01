@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
-
 @Controller
 @SessionAttributes({"bye"})
 public class LoginController {
-
+	
 	@RequestMapping(value = "/test/request", method = RequestMethod.GET)
 	public String index(Model model) {
 		//加入一个属性,用来在模板中读取
@@ -33,6 +31,11 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login/success", method = RequestMethod.GET)
+	public String loginSuccess() {
 		return "login";
 	}
 }
