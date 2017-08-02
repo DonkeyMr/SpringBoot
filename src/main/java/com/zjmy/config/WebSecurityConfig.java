@@ -14,6 +14,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private SecurityArgumentsConfig securityArgumentsConfig;
+	
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -25,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		    .authorizeRequests()
-		        .antMatchers("/").permitAll()
+		        .antMatchers(securityArgumentsConfig.permitAllUrl()).permitAll()  //允许匿名用户访问
 		        .anyRequest().authenticated()
 		        .and()
 		    .formLogin()

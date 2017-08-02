@@ -3,6 +3,9 @@ package com.zjmy.account.model;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,8 +16,10 @@ public class User extends org.springframework.security.core.userdetails.User imp
 
 	private Long id;
 	
+	@NotNull
 	private String username;
 	
+	@Min(6)
 	private String password;
 	
 	private Integer age;
@@ -83,6 +88,8 @@ public class User extends org.springframework.security.core.userdetails.User imp
 		this.gender = gender;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "id= " + id + ", username= " + username + ", password= "

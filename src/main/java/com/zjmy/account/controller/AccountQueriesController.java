@@ -35,7 +35,7 @@ public class AccountQueriesController {
 	 * @param id
 	 * @return
 	 */
-	@ApiOperation(value = "获取用户详细信息", notes = "根据url中的id获取用户详细信息")
+	@ApiOperation(value = "获取用户详细信息")
 	@ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long")
 	@RequestMapping(value = AccountRestCommon.USER, method = RequestMethod.GET)
 	public ResponseEntity<UserResource> get(@PathVariable Long id) {
@@ -45,12 +45,17 @@ public class AccountQueriesController {
 		return new ResponseEntity<UserResource>(resource, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "获取用户列表", notes = "")
+	@ApiOperation(value = "获取用户列表")
 	@RequestMapping(value = AccountRestCommon.USERS, method = RequestMethod.GET)
 	public List<User> getUserList() {
 		logger.info("查询学生列表开始：" + new Date());
 		List<User> list = userService.getUserList();
 		logger.info("查询学生列表结束：" + new Date());
 		return list;
+	}
+	
+	@RequestMapping("/rest/exception")
+	public void getException() {
+		throw new RuntimeException();
 	}
 }
