@@ -13,6 +13,7 @@ logging:
         org.mybatis: OFF
         com.zjmy.account: DEBUG
         org.springframework.security: INFO
+        org.springframework.amqp: OFF
 
 server.tomcat:
     access-log-enabled: true

@@ -1,3 +1,5 @@
 spring.profiles.active: dev
 
-security.permitAll.url: /,/rest/**
+security:
+    permitAll.url: /,/rest/**
+    ignoring: /image/**

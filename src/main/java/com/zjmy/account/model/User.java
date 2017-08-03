@@ -1,18 +1,14 @@
 package com.zjmy.account.model;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import com.zjmy.account.enums.Gender;
-import com.zjmy.account.interfaces.CustomUserDetails;
 
-public class User extends org.springframework.security.core.userdetails.User implements CustomUserDetails {
+public class User {
 
 	private Long id;
 	
@@ -78,16 +74,6 @@ public class User extends org.springframework.security.core.userdetails.User imp
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}	
-	
-	
-	public User(Long id, String username, String password, Integer age, Gender gender,
-			Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, authorities);
-		this.id = id;
-		this.age = age;
-		this.gender = gender;
-	}
-
 	
 	
 	@Override

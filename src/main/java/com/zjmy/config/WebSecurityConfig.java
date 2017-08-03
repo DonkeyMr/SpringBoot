@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,6 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 	
 	@Override
+	public void configure(WebSecurity web) throws Exception {
+		//不走security认证
+        web.ignoring().antMatchers(securityArgumentsConfig.ignoring());		
+	}
+
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		    .authorizeRequests()
@@ -34,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        .and()
 		    .formLogin()
 		        .loginPage("/login")  //跳转到登陆页面
-		        .defaultSuccessUrl("/login/success")
+		        .defaultSuccessUrl("/login/success") //首次登陆时跳转该接口,如果是访问受限后登陆则登陆成功后跳转到之前无权访问的页面
 		        .failureUrl("/login?error")
 		        .permitAll()
 		        .and()

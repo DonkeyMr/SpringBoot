@@ -2,6 +2,7 @@ package com.zjmy.account.controller;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,9 @@ import io.swagger.annotations.Api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,9 +34,8 @@ public class TestController {
 	private String showName;
 	
 	@RequestMapping("/test")
-	public void testValue() {
-	    System.out.println(this.name);
-	    System.out.println(this.showName);
+	public void testValue(Principal principal) {
+	    System.out.println(principal.getName());
 	}
 	
 	@RequestMapping(value = "/pdf")
