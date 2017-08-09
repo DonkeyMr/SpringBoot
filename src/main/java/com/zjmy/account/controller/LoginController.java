@@ -1,9 +1,14 @@
 package com.zjmy.account.controller;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -35,7 +40,10 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login/success", method = RequestMethod.GET)
-	public String loginSuccess() {
-		return "login";
+	@ResponseBody
+	public Collection<? extends GrantedAuthority> loginSuccess() {
+		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext()
+				                                                 .getAuthentication().getAuthorities();
+		return authorities;
 	}
 }

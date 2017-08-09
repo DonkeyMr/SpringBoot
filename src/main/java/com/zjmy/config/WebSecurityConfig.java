@@ -3,14 +3,15 @@ package com.zjmy.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)  //该注解开启@PreAuthorize方式
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -46,9 +47,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        .permitAll()
 		        .and()
 		    .logout()
-		        //.logoutUrl("")  默认退出路径为logout
-		        //.logoutSuccessUrl("")  默认退出成功后跳转到登陆页面 ?logout
-		        .permitAll();
+		        //.logoutUrl("")  默认退出路径为"/logout"
+		        //.logoutSuccessUrl("")  默认退出成功后跳转到登陆页面 "/login?logout"
+		        .permitAll()
+		        .and()
+		    .rememberMe()        //默认有效时间是两周,cookie的名称为remember-me
+		        .key("demoSpringBoot");  //随意起
 		         
 	}
 	

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zjmy.account.enums.Gender;
 
 public class User {
@@ -25,6 +26,7 @@ public class User {
 	 */
 	private Gender gender;
 	
+	@JsonIgnore
     private List<Role> roles;
 
 	public Long getId() {

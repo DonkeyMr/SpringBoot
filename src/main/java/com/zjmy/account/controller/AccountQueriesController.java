@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import com.zjmy.account.model.User;
 import com.zjmy.account.resource.UserResource;
 
 @Api(value = "用户查询", description = "查询用户信息")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 @RestController
 public class AccountQueriesController {
 
@@ -46,6 +48,7 @@ public class AccountQueriesController {
 	}
 	
 	@ApiOperation(value = "获取用户列表")
+	@PreAuthorize("hasAnyRole('ROLE_VIP')")   //方法上的会覆盖类上面的
 	@RequestMapping(value = AccountRestCommon.USERS, method = RequestMethod.GET)
 	public List<User> getUserList() {
 		logger.info("查询学生列表开始：" + new Date());
@@ -54,8 +57,4 @@ public class AccountQueriesController {
 		return list;
 	}
 	
-	@RequestMapping("/rest/exception")
-	public void getException() {
-		throw new RuntimeException();
-	}
 }
