@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	    <meta charset="UTF-8" />
+	    <title>hello</title>
+	</head>
+	<body>
+	    <a th:href="@{/logout}" >退出登陆</a>
+
+	    <table>
+	        <tr th:each="role : ${authorizes}">
+	            <td th:text="${role}">呵呵</td>
+	        </tr>
+	    </table>
+	</body>
+</html>

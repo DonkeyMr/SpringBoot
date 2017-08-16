@@ -52,8 +52,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        .permitAll()
 		        .and()
 		    .rememberMe()        //默认有效时间是两周,cookie的名称为remember-me
-		        .key("demoSpringBoot");  //随意起
-		         
+		        .key("demoSpringBoot")  //随意起,用来分辨不同项目的cookie 
+		        .and()
+		    .csrf().disable();   //关闭csrf防御机制 
 	}
 	
 }

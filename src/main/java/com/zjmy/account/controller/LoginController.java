@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -40,10 +39,10 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login/success", method = RequestMethod.GET)
-	@ResponseBody
-	public Collection<? extends GrantedAuthority> loginSuccess() {
+	public String loginSuccess(Model model) {
 		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext()
 				                                                 .getAuthentication().getAuthorities();
-		return authorities;
+		model.addAttribute("authorizes", authorities);
+		return "main";
 	}
 }
